@@ -1,0 +1,9 @@
+id,name,knows_id,book_id
+1,Hary,,2
+2,Mary,,2
+3,Gary,,2
+4,Larry,,10
+1,Hary,2,
+1,Hary,3,
+1,Hary,4,
+2,Mary,4,

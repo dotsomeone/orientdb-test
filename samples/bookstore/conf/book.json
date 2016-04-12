@@ -1,0 +1,29 @@
+{
+  "source": { "file": { "path": "/Users/haris/dev/zen/garage/bigdata/graph/orientdb/samples/books.csv" } },
+  "extractor": { "csv": {} },
+  "transformers": [
+    { "vertex": { "class": "Book" } },
+    { "edge": { "class": "Wrote",
+                "joinFieldName": "author_id",
+                "lookup": "Author.id",
+                "direction": "in"}
+    }
+  ],
+   "loader": {
+    "orientdb": {
+       "dbURL": "plocal:../databases/p_hist",
+       "dbType": "graph",
+       "classes": [
+         {"name": "Author", "extends": "V"},
+         {"name": "Book", "extends": "V"},
+         {"name": "Buyer", "extends": "V"},
+         {"name": "Wrote", "extends": "E"},
+         {"name": "Bought", "extends": "E"},
+         {"name": "Knows", "extends": "E"}
+       ], "indexes": [
+         {"class":"Author", "fields":["id:integer"], "type":"UNIQUE" },
+         {"class":"Book", "fields":["id:integer"], "type":"UNIQUE" }
+       ]
+    }
+  }
+}
